@@ -1,4 +1,4 @@
-FROM openjdk:8
-COPY target/Candidate-0.0.1-SNAPSHOT.jar  Candidate.jar
-EXPOSE 8081
-ENTRYPOINT ["java","-jar","/Candidate.jar"]
+FROM openjdk:11
+EXPOSE 8089
+COPY target/tpAchatProject-1.0.jar tpAchatProject.jar
+ENTRYPOINT ["java","-jar","/tpAchatProject.jar"]
