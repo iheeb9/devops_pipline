@@ -24,7 +24,7 @@ pipeline {
         }
         stage('docker') {
             steps {
-             sh 'docker build -t condidate .'
+             sh 'ansible-playbook ansible-playbook.yml'
         
         
             }
