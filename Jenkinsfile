@@ -3,7 +3,7 @@ pipeline {
     agent any 
         tools { 
         maven "MyMaven"
-	
+	docker "Mydocker"
         
     }
        
