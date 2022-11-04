@@ -21,6 +21,17 @@ pipeline {
         
             }
         }
+         stage('sonarqube') {
+            steps {
+            withSonarQubeEnv( 'sonarqube:8.9.7-community') {
+                 sh 'mvn sonar:sonar'
+   
+                }
+        
+        
+            }
+        }
+        
         stage('docker') {
             steps {
              sh 'ansible --version'
