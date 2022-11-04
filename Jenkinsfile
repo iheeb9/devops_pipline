@@ -25,7 +25,7 @@ pipeline {
                 stage('Nexus') {
             steps {
                 script{
-      nexusPublisher nexusInstanceId: 'nexus3', nexusRepositoryId: 'Maven-', packages: [], tagName: 'tpachat'            }
+      nexusPublisher nexusInstanceId: 'nexus3', nexusRepositoryId: 'Maven-'       }
             }
         }
   
