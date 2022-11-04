@@ -22,7 +22,7 @@ pipeline {
             }
         }
 
-                stage('Nexus') {
+        stage('Nexus') {
             steps {
                 script{
           nexusPublisher nexusInstanceId: 'nexus3',
@@ -32,8 +32,8 @@ pipeline {
                                           mavenCoordinate: [artifactId: 'tpAchatProject', groupId: 'com.esprit.examen', packaging: 'jar', version: '1.0']]]      
                 }
         }
-  
-        
+         
+        }
         
         
         
