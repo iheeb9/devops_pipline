@@ -31,6 +31,13 @@ pipeline {
         
             }
         }
+                stage('Nexus') {
+            steps {
+                script{
+                    nexusArtifactUploader artifacts: [[artifactId: 'tpAchatProject', classifier: '', file: 'target/tpAchatProject-1.0', type: 'jar']], credentialsId: 'nexus-cred', groupId: 'org.springframework.boot', nexusUrl: '192.168.88.135:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'Maven-', version: '2.5.3'
+                }
+            }
+        }
         
         stage('docker') {
             steps {
@@ -39,6 +46,8 @@ pipeline {
         
             }
         }
+        
+        
         
     }
     
