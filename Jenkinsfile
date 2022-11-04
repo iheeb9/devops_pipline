@@ -34,8 +34,7 @@ pipeline {
                 stage('Nexus') {
             steps {
                 script{
-                 nexusPublisher nexusInstanceId: 'nexus3', nexusRepositoryId: 'Maven-', packages: [[$class: 'MavenPackage', 
-                            mavenAssetList: [], mavenCoordinate: [artifactId: 'tpAchatProject', groupId: 'com.esprit.examen', packaging: 'jar', version: '1.0']]]          
+          nexusPublisher nexusInstanceId: 'nexus3', nexusRepositoryId: 'Maven-', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/tpAchatProject']], mavenCoordinate: [artifactId: 'tpAchatProject', groupId: 'com.esprit.examen', packaging: 'jar', version: '1.0']]]      
                 }
             }
         }
