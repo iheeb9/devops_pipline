@@ -29,27 +29,20 @@ pipeline {
         
             }
         }
-         stage('sonarqube') {
+         stage('buildimage') {
             steps {
-            withSonarQubeEnv( 'sonarqube:8.9.7-community') {
-                 sh 'mvn sonar:sonar'
+                 sh 'ansible.playbook ansible.playbook.yml '
    
-                }
-        
-        
             }
         }
-        stage('Nexus') {
+        
+         stage('push docker hub') {
             steps {
-                script{
-          nexusPublisher nexusInstanceId: 'nexus3',
-                                          nexusRepositoryId: 'Maven-',
-                                          packages: [[$class: 'MavenPackage', 
-                                          mavenAssetList: [[classifier: '', extension: '', filePath: 'target/tpAchatProject-1.0.jar']], 
-                                          mavenCoordinate: [artifactId: 'tpAchatProject', groupId: 'com.esprit.examen', packaging: 'jar', version: '1.0']]]      
-                }
+                 sh 'docker push iheeb9/test'
+   
             }
-        }        
+        }
+        
         
     
         
