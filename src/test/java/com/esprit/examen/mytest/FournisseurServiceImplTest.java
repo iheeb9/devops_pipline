@@ -12,23 +12,16 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-
-import com.esprit.examen.BaseTest;
 import com.esprit.examen.entities.DetailFournisseur;
 import com.esprit.examen.entities.Fournisseur;
 import com.esprit.examen.repositories.FournisseurRepository;
 import com.esprit.examen.services.FournisseurServiceImpl;
 
 import java.util.List;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import lombok.extern.slf4j.Slf4j;
 
-
-@DataJpaTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class FournisseurServiceImplTest extends BaseTest {
+@SpringBootTest
+@ActiveProfiles("test")
+public class FournisseurServiceImplTest   {
 	
 
 	@Autowired
