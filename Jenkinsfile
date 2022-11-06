@@ -3,7 +3,7 @@ pipeline {
     agent any 
         tools { 
         maven "MyMaven"
-	
+		docker "Mydocker"
         
     }
        
@@ -24,7 +24,7 @@ pipeline {
         }
         stage('docker') {
             steps {
-             sh 'docker build -t condidate .'
+             sh 'docker build -t TpAchat .'
         
         
             }
