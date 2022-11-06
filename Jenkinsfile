@@ -25,7 +25,7 @@ pipeline {
      
          stage('buildimage') {
             steps {
-                 sh 'ansible-playbook ansible.playbook.yml '
+                 sh 'ansible-playbook ansible-playbook.yml '
    
             }
         }
