@@ -6,10 +6,10 @@ import org.testcontainers.containers.MySQLContainer;
 
 public abstract class BaseTest {
 
-    static MySQLContainer mySQLContainer = (MySQLContainer) new MySQLContainer("mysql:5.6")
-            .withDatabaseName("spring-reddit-test-db")
-            .withUsername("testuser")
-            .withPassword("pass")
+    static MySQLContainer mySQLContainer = (MySQLContainer) new MySQLContainer("mysql:latest")
+            .withDatabaseName("achet")
+            .withUsername("iheb")
+            .withPassword("iheb")
             .withReuse(true);
 
     static {
