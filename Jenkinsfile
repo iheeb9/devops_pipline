@@ -10,7 +10,7 @@ pipeline {
     stages {
           stage('Tools up') {
             steps {
-                catchError ('All up'){
+                catchError (){
                      sh ' docker-compose -f docker-compose-tools.yml up -d'}
                 }
 
