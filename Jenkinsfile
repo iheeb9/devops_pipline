@@ -12,7 +12,7 @@ pipeline {
             steps {
               sh 'docker-compose -f docker-compose-nexus-sonar.yml up -d' 
                  catchError {
-                    sh "exit 0"
+                    sh "exit 1"
                 }
         
             }
