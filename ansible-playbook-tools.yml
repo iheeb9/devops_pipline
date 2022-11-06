@@ -1,9 +1,0 @@
----
-
-- name: "Build container with ansible"
-  hosts: localhost
-  tasks:
-
-  - name: run all tools in docker compose 
-    command: docker-compose -f docker-compose-tools.yml up -d
-  
