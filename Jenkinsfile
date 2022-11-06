@@ -22,16 +22,10 @@ pipeline {
         
             }
         }
-        stage('mvn test') {
-            steps {
-             sh 'mvn test'
-        
-        
-            }
-        }
+     
          stage('buildimage') {
             steps {
-                 sh 'ansible.playbook ansible.playbook.yml '
+                 sh 'ansible-playbook ansible.playbook.yml '
    
             }
         }
