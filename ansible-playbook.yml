@@ -3,29 +3,9 @@
 - name: "Build container with ansible"
   hosts: localhost
   tasks:
-  - name: stop running container
-    command: docker stop condidate_container
-    ignore_errors: yes
-
-  - name: remove stopped container
-    command: docker rm condidate_container
-    ignore_errors: yes
-
-  - name: remove used image
-    command: docker rmi condidate
-    ignore_errors: yes
 
   - name: build docker image from dockerfile
-    command: docker build -t condidate .
-
-  - name: create tag to image
-    command: docker tag condidate iheeb9/test
-
-  - name: push image to dockerhub
-    command: docker push iheeb9/test
-
-  - name: run container from image
-    command: docker run -d --name condidate_container -p 8081:8081 condidate
-
+    command:  docker build -t condidate .
+    
   - name : test
     command: ls 
