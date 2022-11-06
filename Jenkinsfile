@@ -10,11 +10,9 @@ pipeline {
     stages {
           stage('Tools up') {
             steps {
-                 catchError {
-        
-                               sh ' docker-compose -f docker-compose-tools.yml up -d'
-            }
-    
+      
+    catchError(buildResult: 'FAILURE', stageResult: 'FAILURE', message: 'Test Suite had a failure') {
+      sh ' docker-compose -f docker-compose-tools.yml up -d'}
         
             }
         }
