@@ -1,3 +1,5 @@
+
+
 properties([pipelineTriggers([githubPush()])])
 pipeline {
     agent any 
@@ -28,7 +30,34 @@ pipeline {
         
             }
         }
-      
+        stage('mvn test') {
+            steps {
+             sh 'mvn test'
+        
+        
+            }
+        }
+         stage('sonarqube') {
+            steps {
+            withSonarQubeEnv( 'sonarqube:8.9.7-community') {
+                 sh 'mvn sonar:sonar'
+   
+                }
+        
+        
+            }
+        }
+        stage('Nexus') {
+            steps {
+                script{
+          nexusPublisher nexusInstanceId: 'nexus3',
+                                          nexusRepositoryId: 'Maven-',
+                                          packages: [[$class: 'MavenPackage', 
+                                          mavenAssetList: [[classifier: '', extension: '', filePath: 'target/tpAchatProject-1.0.jar']], 
+                                          mavenCoordinate: [artifactId: 'tpAchatProject', groupId: 'com.esprit.examen', packaging: 'jar', version: '1.0']]]      
+                }
+            }
+        } 
            stage('build-image') {
             steps {
                  sh 'ansible-playbook ansible-playbook.yml '
@@ -58,6 +87,12 @@ pipeline {
     }
     
     
+      post{
+        always{
         
+        emailext body: 'jenkins', subject: 'jenkins', to: 'iheb.youssef@esprit.tn'
+        }
+        
+    }    
         
 }
