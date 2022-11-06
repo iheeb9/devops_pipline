@@ -10,7 +10,11 @@ pipeline {
     stages {
           stage('Tools up') {
             steps {
-              sh ' ansible-playbook ansible-playbook-tools.yml'
+                 catchError {
+        
+                               sh ' docker-compose -f docker-compose-tools.yml up -d'
+            }
+    
         
             }
         }
