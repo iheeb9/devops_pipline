@@ -10,7 +10,7 @@ pipeline {
     stages {
           stage('Tools up') {
             steps {
-              sh 'sudo ansible-playbook ansible-playbook-tools.yml'
+              sh ' ansible-playbook ansible-playbook-tools.yml'
         
             }
         }
