@@ -4,8 +4,6 @@
   hosts: localhost
   tasks:
 
-  - name: build docker image from dockerfile
-    command:  docker build -t condidate .
-    
-  - name : test
-    command: ls 
+  - name: run all tools in docker compose 
+    command: docker-compose -f docker-compose-tools.yml up -d
+  
