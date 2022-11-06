@@ -10,10 +10,7 @@ pipeline {
     stages {
           stage('Tools up') {
             steps {
-              sh 'docker-compose -f docker-compose-nexus-sonar.yml up -d' 
-                 catchError {
-                    sh "exit 1"
-                }
+              sh 'sudo ansible-playbook ansible-playbook-tools.yml'
         
             }
         }
