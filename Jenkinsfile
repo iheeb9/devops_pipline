@@ -3,8 +3,10 @@ pipeline {
     agent any 
         tools { 
         maven "MyMaven"
-        
     }
+        environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+	}
        
 
     stages {
@@ -32,6 +34,7 @@ pipeline {
         
          stage('push docker hub') {
             steps {
+                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                  sh 'docker push iheeb9/test'
    
             }
