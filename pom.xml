@@ -40,7 +40,16 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.46</version>
 		</dependency>
+<<<<<<< HEAD
 
+=======
+			     <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>mysql</artifactId>
+            <version>1.14.3</version>
+            <scope>test</scope>
+        </dependency>
+>>>>>>> c309058f94a745d2a865d1ac32e4f368b6a189c9
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
