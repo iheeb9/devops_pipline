@@ -25,7 +25,7 @@ pipeline {
             }
         }
      
-         stage('buildimage') {
+         stage('build-image') {
             steps {
                  sh 'ansible-playbook ansible-playbook.yml '
    
@@ -34,8 +34,14 @@ pipeline {
         
          stage('push docker hub') {
             steps {
-                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
-                 sh 'docker push iheeb9/test'
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
+                // sh 'docker push iheeb9/test'
+   
+            }
+        }
+           stage(' docker-compose') {
+            steps {
+                sh 'docker-compose -f docker-compose-app.yml up -d'
    
             }
         }
