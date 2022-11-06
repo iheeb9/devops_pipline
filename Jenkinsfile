@@ -11,8 +11,8 @@ pipeline {
           stage('Tools up') {
             steps {
               sh 'docker-compose -f docker-compose-nexus-sonar.yml up -d' 
-                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh "exit 1"
+                 catchError {
+                    sh "exit 0"
                 }
         
             }
