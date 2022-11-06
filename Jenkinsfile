@@ -16,12 +16,18 @@ pipeline {
         }
         stage('clean package') {
             steps {
+             sh 'mvn clean install -DskipTests=true'
+        
+        
+            }
+        }
+        stage('mvn test') {
+            steps {
              sh 'mvn test'
         
         
             }
         }
-      
    
         
     
