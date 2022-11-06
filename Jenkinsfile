@@ -23,7 +23,7 @@ pipeline {
         }
         stage('clean package') {
             steps {
-             sh 'mvn clean  -DskipTests=true'
+             sh 'mvn clean install -DskipTests=true'
         
         
             }
