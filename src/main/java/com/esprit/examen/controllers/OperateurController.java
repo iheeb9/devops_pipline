@@ -36,7 +36,7 @@ public class OperateurController {
 	
 	@PostMapping("/add-operateur")
 	@ResponseBody
-	public Operateur addOperateur(@RequestBody OperateurRequest op) {
+	public Operateur ajouterOperateur(@RequestBody OperateurRequest op) {
 		Operateur p=new Operateur();
 		p.setNom(op.getNom());
 		p.setPassword(op.getPassword());
