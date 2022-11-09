@@ -7,12 +7,8 @@ pipeline {
         maven "MyProjectDevops"
         
     }
-
-      environment {
-        DOCKERHUB_CREDENTIALS=credentials('dockerhub')
-    }
-       
-       
+  
+      
 
     stages {
 
