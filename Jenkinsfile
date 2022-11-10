@@ -1,21 +1,23 @@
-
-
 properties([pipelineTriggers([githubPush()])])
 pipeline {
     agent any 
         tools { 
-        maven "MyProjectDevops"
+        maven "MyMaven"
         
     }
-  
-      
+
+      environment {
+        DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+    }
+       
+       
 
     stages {
 
         
         stage('git clone') {
             steps {
-               git branch: 'chames-devops', url: 'https://github.com/iheeb9/devops_pipline'
+               git branch: 'main', url: 'https://github.com/iheeb9/devops_pipline'
         
             }
         }
@@ -33,9 +35,7 @@ pipeline {
         
             }
         }
-            
-    }  
-     stage('sonarqube') {
+         stage('sonarqube') {
             steps {
             withSonarQubeEnv( 'sonarqube:8.9.7-community') {
                  sh 'mvn sonar:sonar'
@@ -45,10 +45,24 @@ pipeline {
         
             }
         }
+ 
+   
+        
+     
+    
+               
+        
+    
+        
+        
+        
+    }
+    
+    
       post{
         always{
         
-        emailext body: 'jenkins', subject: 'jenkins', to: 'iheb.youssef@esprit.tn'
+        emailext body: 'jenkins', subject: 'jenkins', to: 'chames.benrezigue@esprit.tn'
         }
         
     }    
