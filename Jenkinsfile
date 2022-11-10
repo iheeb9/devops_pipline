@@ -38,7 +38,17 @@ pipeline {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
             }
         }
- 
+   stage('Nexus') {
+            steps {
+                script{
+          nexusPublisher nexusInstanceId: 'nexus3',
+                                          nexusRepositoryId: 'Maven-',
+                                          packages: [[$class: 'MavenPackage', 
+                                          mavenAssetList: [[classifier: '', extension: '', filePath: 'target/tpAchatProject-1.0.jar']], 
+                                          mavenCoordinate: [artifactId: 'tpAchatProject', groupId: 'com.esprit.examen', packaging: 'jar', version: '1.0']]]      
+                }
+            }
+        }
    
         
      
