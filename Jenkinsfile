@@ -7,7 +7,13 @@ pipeline {
         maven "MyProjectDevops"
         
     }
-  
+  environment {
+        NEXUS_VERSION = "nexus3"
+        NEXUS_PROTOCOL = "http"
+        NEXUS_URL = "http://172.10.0.140:8081"
+        NEXUS_REPOSITORY = "maven-nexus-repo"
+        NEXUS_CREDENTIAL_ID = "nexsus"
+    }
       
 
     stages {
