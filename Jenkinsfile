@@ -34,9 +34,17 @@ pipeline {
             }
         }
             
-    }
-    
-    
+    }  
+     stage('sonarqube') {
+            steps {
+            withSonarQubeEnv( 'sonarqube:8.9.7-community') {
+                 sh 'mvn sonar:sonar'
+   
+                }
+        
+        
+            }
+        }
       post{
         always{
         
