@@ -33,14 +33,9 @@ pipeline {
         
             }
         }
-         stage('sonarqube') {
+        stage('MVN SONARQUBE') {
             steps {
-            withSonarQubeEnv( 'sonarqube:8.9.7-community') {
-                 sh 'mvn sonar:sonar'
-   
-                }
-        
-        
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
             }
         }
  
