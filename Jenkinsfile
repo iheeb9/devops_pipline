@@ -1,23 +1,21 @@
+
+
 properties([pipelineTriggers([githubPush()])])
 pipeline {
     agent any 
         tools { 
-        maven "MyMaven"
+        maven "MyProjectDevops"
         
     }
-
-      environment {
-        DOCKERHUB_CREDENTIALS=credentials('dockerhub')
-    }
-       
-       
+  
+      
 
     stages {
 
         
         stage('git clone') {
             steps {
-               git branch: 'main', url: 'https://github.com/iheeb9/devops_pipline'
+               git branch: 'chames-devops', url: 'https://github.com/iheeb9/devops_pipline'
         
             }
         }
