@@ -104,14 +104,8 @@ pipeline {
    
 //             }
 //         }
-//            stage(' docker-compose') {
-//             steps {
-//                 sh 'docker-compose -f docker-compose-app.yml up -d'
-   
-//             }
-//         } 
+        
                
-       
          stage('Building our image') {
                  			steps {
                  				script {
@@ -129,15 +123,41 @@ pipeline {
                            }
 
                          }
-    stage       ('DOCKER COMPOSE') {
-             steps {
-                sh 'docker-compose up  -d'
+        
+           stage(' docker-compose') {
+            steps {
+                sh 'docker-compose -f docker-compose-app.yml up -d'
+   
             }
-        }
+        } 
+               
+       
+//          stage('Building our image') {
+//                  			steps {
+//                  				script {
+//                  					dockerImage = docker.build registry + ":$BUILD_NUMBER"
+//                  					}
+//                  				}
+//                  		}
+//                  		stage('Deploy our image') {
+//                           steps {
+//                           script {
+//                               docker.withRegistry( '', registryCredential ) {
+//                               dockerImage.push()
+//                                 }
+//                              }
+//                            }
+
+//                          }
+//     stage       ('DOCKER COMPOSE') {
+//              steps {
+//                 sh 'docker-compose up  -d'
+//             }
+//         }
         
         
         
-    }
+//     }
     
     
       post{
