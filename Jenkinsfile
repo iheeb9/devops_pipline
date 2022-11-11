@@ -10,12 +10,7 @@ pipeline {
 
       
 
-    stages {
-         stage ('NEXUS DEPLOY') {
-            steps {
-                sh 'mvn clean package deploy:deploy-file -DgroupId=com.esprit.examen -DartifactId=tpAchatProject -Dversion=1.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://172.10.0.140:8081/repository/maven-releases/ -Dfile=target/tpAchatProject-1.0.jar -DskipTests'
-            }
-        }
+    
 //  stage('Nexus') {
 //             steps {
 //                 script{
@@ -38,6 +33,12 @@ pipeline {
              sh 'mvn clean install -DskipTests=true'
         
         
+            }
+        }
+    stages {
+         stage ('NEXUS DEPLOY') {
+            steps {
+                sh 'mvn clean package deploy:deploy-file -DgroupId=com.esprit.examen -DartifactId=tpAchatProject -Dversion=1.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://172.10.0.140:8081/repository/maven-releases/ -Dfile=target/tpAchatProject-1.0.jar -DskipTests'
             }
         }
         stage('mvn test') {
