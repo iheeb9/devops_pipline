@@ -8,6 +8,12 @@ pipeline {
         
     }
   environment {
+      registry = "chamsbenrezigue/tpachat" 
+
+        registryCredential = 'dockerhub' 
+
+        dockerImage = ''
+
         DOCKERHUB_CREDENTIALS=credentials('dockerhub')
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
