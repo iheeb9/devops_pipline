@@ -19,7 +19,7 @@ services:
   spring-app:
     depends_on:
       - mysqldb
-    image: hichembenzammel/tpachat:latest
+    image: chamsbenrezigue/tpachat:latest
     build: .
     restart: on-failure
     env_file: ./.env
