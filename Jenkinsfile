@@ -105,6 +105,13 @@ pipeline {
             }
         }
         
+           stage(' docker-compose') {
+            steps {
+                sh 'docker-compose -f docker-compose-app.yml up -d'
+   
+            }
+        }
+        
                
 //          stage('Building our image') {
 //                  			steps {
