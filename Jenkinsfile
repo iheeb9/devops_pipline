@@ -16,18 +16,6 @@ pipeline {
     }
       
 
-    
-//  stage('Nexus') {
-//             steps {
-//                 script{
-//           nexusPublisher nexusInstanceId: 'nexus3',
-//                                           nexusRepositoryId: 'Maven-',
-//                                           packages: [[$class: 'MavenPackage', 
-//                                           mavenAssetList: [[classifier: '', extension: '', filePath: 'target/tpAchatProject-1.0.jar']], 
-//                                           mavenCoordinate: [artifactId: 'tpAchatProject', groupId: 'com.esprit.examen', packaging: 'jar', version: '1.0']]]      
-//                 }
-//             }
-//         } 
         
     stages {
         stage('git clone') {
@@ -41,6 +29,20 @@ pipeline {
              sh 'mvn clean install -DskipTests=true'
         
         
+            }
+        }
+        
+        
+         stage('mvn test') {
+            steps {
+             sh 'mvn test'
+        
+        
+            }
+        }
+        stage('MVN SONARQUBE') {
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
             }
         }
         
@@ -79,21 +81,29 @@ pipeline {
                 }
             }
         }
-        stage('mvn test') {
-            steps {
-             sh 'mvn test'
-        
-        
-            }
-        }
-        stage('MVN SONARQUBE') {
-            steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
-            }
-        }
+       
 
      
-    
+   stage('build-image') {
+            steps {
+                 sh 'ansible-playbook ansible-playbook.yml '
+   
+            }
+        }
+        
+         stage('push docker hub') {
+            steps {
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
+                // sh 'docker push iheeb9/test'
+   
+            }
+        }
+           stage(' docker-compose') {
+            steps {
+                sh 'docker-compose -f docker-compose-app.yml up -d'
+   
+            }
+        } 
                
         
     
