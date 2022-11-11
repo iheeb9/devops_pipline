@@ -6,7 +6,7 @@ pipeline {
         tools { 
         maven "MyProjectDevops"
         
-    }
+    } }
   environment {
       registry = "chamsbenrezigue/tpachat" 
 
@@ -170,5 +170,5 @@ pipeline {
         
     }    
         
-}
+
 }
