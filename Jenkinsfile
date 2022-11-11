@@ -106,13 +106,13 @@ pipeline {
 //         }
         
                
-//          stage('Building our image') {
-//                  			steps {
-//                  				script {
-//                  					dockerImage = docker.build registry + ":$BUILD_NUMBER"
-//                  					}
-//                  				}
-//                  		}
+         stage('Building our image') {
+                 			steps {
+                 				script {
+                 					dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                 					}
+                 				}
+                 		}
                  		
         
 
@@ -126,12 +126,12 @@ pipeline {
 //                            }
 
 //                          }
-           stage(' docker-compose') {
-            steps {
-                sh 'docker build -t test .'
+//            stage(' docker-compose') {
+//             steps {
+//                 sh 'docker build -t test .'
    
-            }
-        } 
+//             }
+//         } 
                
        
 //          stage('Building our image') {
